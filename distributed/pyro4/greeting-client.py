@@ -3,9 +3,9 @@ import Pyro4
 
 name = input("What is your name? ").strip()
 
-ip_in_lan='100.100.100.1'
+server_ip_in_lan='100.100.100.1'
 
-call_addr = "PYRONAME:example.greeting@" + ip_in_lan
+call_addr = "PYRONAME:example.greeting@" + server_ip_in_lan
 
 greeting_maker = Pyro4.Proxy(call_addr)    # use name server object lookup uri shortcut
 # greeting_maker = Pyro4.Proxy("PYRONAME:example.greeting")

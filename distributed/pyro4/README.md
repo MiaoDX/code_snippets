@@ -13,3 +13,9 @@ There are two PCs, one server with IP `192.168.0.151`, one client with IP `192.1
 In fact, it would be better if we do not have to care about the ip of server in the sever side at all, with `0.0.0.0` means all other computers can access this server. For example, in the wireless LAN in our lab, the IP of server is `192.168.0.151`, it can be accessed with this IP in the same LAN. I also hope that in another LAN, such as the virtual machines in the virtualbox can call the server with a different ip of maybe `100.100.100.1` in their LAN without a single line of change in the server code. But this is not the case at present. So we can only use it in a specific LAN by specify the ip of server in that LAN. (WELL, like a doggerel~)
 
 Maybe more in-depth reading of the examples and docs can help, but by far, this is enough.
+
+
+* multi_servers
+    - We can call multi servers from one client, as expected
+* pyro4_long_connnection
+    - We can call one server from multi clients, and like HTTP calls, it won't block.
