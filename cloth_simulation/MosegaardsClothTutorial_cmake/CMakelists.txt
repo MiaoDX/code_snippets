@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.1.0)
+project(MosegaardsClothTutorial)
+
+find_package(OpenGL REQUIRED)
+
+set (FREEGLUT_DIR "C:/tools/cmake_install_libs/freeglut") # build from scratch first
+
+include_directories(${FREEGLUT_DIR}/include)
+link_directories(${FREEGLUT_DIR}/lib)
+
+add_executable( ${PROJECT_NAME} MosegaardsClothTutorial.cpp )
+target_link_libraries( ${PROJECT_NAME} freeglut )
+
+# THIS will copy all freeglut dlls into the dir, but okay to use.
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${FREEGLUT_DIR}/bin"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
