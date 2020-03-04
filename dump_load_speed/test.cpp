@@ -1,36 +1,5 @@
 // The speed test of dump/load image file with OpenCV
 // https://stackoverflow.com/questions/32332920/efficiently-load-a-large-mat-into-memory-in-opencv/32357875#32357875
-/*
-On Laptop(X1 Carbon)
-Test dump
-Using Raw: 570.444
-Using PNG ENCODE: 6089.1
-Using PNG: 6525.08
-Using JPG ENCODE: 1169.76
-Using JPG: 1274.53
-Using BMP: 418.337
-Test load
-Using Raw: 73.6282
-Using PNG: 2993.55
-Using JPG: 985.9
-Using BMP: 139.892
-
-However, on QNX IECU
-Test dump
-Using Raw: 17152.3
-Using PNG ENCODE: 18298.3
-Using PNG: 24706
-Using JPG ENCODE: 10310.6
-Using JPG: 11995.5
-Using BMP: 17475.3
-Test load
-Using Raw: 9931.6
-Using PNG: 10429.6
-Using JPG: 7316.71
-Using BMP: 8145.67
-
-That is, the writing to disk operation on IECU is already rather long, which is a pity.
-*/
 
 #include <fstream>
 #include <iostream>
