@@ -3,15 +3,33 @@
 /*
 On Laptop(X1 Carbon)
 Test dump
-Using Raw: 565.069
-Using PNG: 4995.32
-Using JPG: 954.782
-Using BMP: 371.686
+Using Raw: 570.444
+Using PNG ENCODE: 6089.1
+Using PNG: 6525.08
+Using JPG ENCODE: 1169.76
+Using JPG: 1274.53
+Using BMP: 418.337
 Test load
-Using Raw: 58.114
-Using PNG: 2448.49
-Using JPG: 760.927
-Using BMP: 111.122
+Using Raw: 73.6282
+Using PNG: 2993.55
+Using JPG: 985.9
+Using BMP: 139.892
+
+However, on QNX IECU
+Test dump
+Using Raw: 17152.3
+Using PNG ENCODE: 18298.3
+Using PNG: 24706
+Using JPG ENCODE: 10310.6
+Using JPG: 11995.5
+Using BMP: 17475.3
+Test load
+Using Raw: 9931.6
+Using PNG: 10429.6
+Using JPG: 7316.71
+Using BMP: 8145.67
+
+That is, the writing to disk operation on IECU is already rather long, which is a pity.
 */
 
 #include <fstream>
@@ -77,12 +95,32 @@ int main() {
   }
 
   {
+    std::vector<unsigned char> vec;
+    double tic = double(getTickCount());
+    for (int i = 0; i < RUNNUM; i++)
+      cv::imencode(".png", m, vec);
+    double toc = (double(getTickCount()) - tic) * 1000. / getTickFrequency();
+    cout << "Using PNG ENCODE: " << toc << endl;
+  }
+
+  {
     double tic = double(getTickCount());
     for (int i = 0; i < RUNNUM; i++)
       cv::imwrite("im.png", m);
     double toc = (double(getTickCount()) - tic) * 1000. / getTickFrequency();
     cout << "Using PNG: " << toc << endl;
   }
+
+
+  {
+    std::vector<unsigned char> vec;
+    double tic = double(getTickCount());
+    for (int i = 0; i < RUNNUM; i++)
+      cv::imencode(".jpg", m, vec);
+    double toc = (double(getTickCount()) - tic) * 1000. / getTickFrequency();
+    cout << "Using JPG ENCODE: " << toc << endl;
+  }
+
 
   {
     double tic = double(getTickCount());
