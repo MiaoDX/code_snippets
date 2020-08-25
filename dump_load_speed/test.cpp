@@ -59,6 +59,7 @@ int main() {
     double tic = double(getTickCount());
     for (int i = 0; i < RUNNUM; i++)
       matwrite("im.bin", m);
+    // matwrite("im"+".bin", m);
     double toc = (double(getTickCount()) - tic) * 1000. / getTickFrequency();
     cout << "Using Raw: " << toc << endl;
   }
@@ -80,7 +81,6 @@ int main() {
     cout << "Using PNG: " << toc << endl;
   }
 
-
   {
     std::vector<unsigned char> vec;
     double tic = double(getTickCount());
@@ -89,7 +89,6 @@ int main() {
     double toc = (double(getTickCount()) - tic) * 1000. / getTickFrequency();
     cout << "Using JPG ENCODE: " << toc << endl;
   }
-
 
   {
     double tic = double(getTickCount());
