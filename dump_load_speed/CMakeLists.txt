@@ -14,7 +14,7 @@ message( STATUS "    libraries: ${OpenCV_LIBS}" )
 message( STATUS "    include path: ${OpenCV_INCLUDE_DIRS}" )
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-include_directories(include)
+include_directories(include stb_partial)
 
 add_executable(dump_load_test test.cpp)
 target_link_libraries(dump_load_test
