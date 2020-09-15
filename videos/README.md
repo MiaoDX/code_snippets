@@ -12,4 +12,8 @@ A lossless video codec based on arithmetic coding developed in the open source f
 
 To summary,
 
-Use lossless codec for encoding, we are done. 
+Use lossless codec for encoding (ffmpeg+ffv1+mkv), we are done.
+
+
+Note,
+This codes may depends on the version of OpenCV, tested okay with `3.4.6` and **have seen something wrong with prior versions**.

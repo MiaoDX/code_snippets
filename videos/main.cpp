@@ -10,7 +10,8 @@ using namespace std;
 int main(int, char **) {
 
   string src_f = "../000.png";
-  string dst_video_f = "./lossless_video.avi";
+//   string dst_video_f = "./lossless_video.avi";
+  string dst_video_f = "./lossless_video.mkv";
 
   Mat src = cv::imread(src_f);
   cv::imwrite("./000_back1.png", src);
@@ -24,6 +25,7 @@ int main(int, char **) {
   int codec = VideoWriter::fourcc('F', 'F', 'V', '1');
   double fps = 5.0; // framerate of the created video stream
   writer.open(dst_video_f, codec, fps, src.size(), isColor);
+  cout << "codec:" << codec << '\n';
 
   // check if we succeeded
   if (!writer.isOpened()) {
